@@ -1,0 +1,33 @@
+export const id = "portfolio-2022"
+export const title = "Portfolio 2022"
+export const description = "A modern and playful portfolio site built without frameworks, using serverless hosting and edge computing on Google Firebase."
+export const date = "2022"
+export const img = "/images/portfolio-2022.png"
+
+# {title}
+
+![Screenshot of 2022 Portfolio](/images/portfolio-2022.png)
+
+## Summary
+
+- **Technologies**: Built without frameworks, uses serverless hosting and edge computing on Google Firebase.
+- **Design**: Modern, playful design with a fun color palette and efficient SVG graphics.
+- **Challenges**: Implementing a secure contact form and combating spam with Google reCAPTCHA.
+
+## Technologies
+
+For this project, I aimed to minimize the use of third-party code. The page is built without any frameworks or CSS libraries, using only a small package for scroll animation. I also used this project as an opportunity to learn more about serverless hosting and edge computing. The entire site is hosted on Google Firebase Hosting, and the contact form is powered by Google Firebase Cloud Functions. This setup ensures the website is fast, secure, and cost-effective.
+
+## Design
+
+I aimed for a modern yet playful design with a fun color palette. The SVG graphics are efficient and add an eye-catching touch to the site.
+
+## Challenges
+
+I needed a way for people to contact me without sharing my email directly. I implemented a contact form that sends data to a cloud function, which then processes the request and emails me the information.
+
+However, I quickly realized that bots were frequently targeting the contact form, resulting in a significant amount of spam. To counter this, I integrated Google reCAPTCHA on both the front end and in the cloud function. This effectively eliminated the spam.
+
+![Screenshot of Contact Form](/images/portfolio-2022-contact.png)
+
+[Visit Site](https://personal-homepage2022.web.app)
