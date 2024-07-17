@@ -1,6 +1,6 @@
 import { useNavigate } from "@remix-run/react";
 import { motion } from "framer-motion";
-import { ReactNode, useEffect, useRef } from "react";
+import { MouseEventHandler, ReactNode, useEffect, useRef } from "react";
 import { useScrollLock } from "~/scrollLockContext";
 
 interface PageCardProps {
@@ -41,6 +41,13 @@ export function PageDialog({
     navigate('/', { preventScrollReset: true });
   }
 
+  const handleContentClick: MouseEventHandler<HTMLDialogElement> = (e) => {
+    // Close dialog if user clicks outside of content
+    if (e.target === e.currentTarget) {
+      navigate('/', { preventScrollReset: true })
+    }
+  }
+
   return <>
     {/* Background */}
     <motion.div
@@ -55,14 +62,11 @@ export function PageDialog({
       open
       ref={dialogRef}
       onCancel={handleDialogCancel}
-      onClick={() => navigate('/', { preventScrollReset: true })}
+      onClick={handleContentClick}
       layoutScroll
       className="fixed inset-0 overflow-auto overscroll-contain backdrop:hidden m-0 max-w-none max-h-none bg-transparent h-auto w-auto"
     >
-      <div onClick={(e) => e.stopPropagation()} className="mx-auto">
-        {children}
-      </div>
-      
+      {children}
     </motion.dialog>
   </>
 }
