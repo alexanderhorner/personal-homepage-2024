@@ -60,9 +60,22 @@ export default function Index() {
 const Header = () => {
   return (
     <header className="flex items-center justify-left gap-4 px-5 py-6 md:px-6 lg:px-8">
-      <span className="text-orange-600 mr-auto">Alexander Horner</span>
-      {/* <Link to="#">GitHub</Link>
-      <Link to="#">LinkedIn</Link> */}
+      <span className="text-orange-600 mr-auto font-display font-medium">Alexander Horner</span>
+      <Link 
+        to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
+        className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+      >
+        <FontAwesomeIcon icon={faLinkedin} className=""/>
+        {/* LinkedIn */}
+      </Link>
+
+      <Link 
+        to="https://github.com/alexanderhorner"
+        className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+      >
+        <FontAwesomeIcon icon={faGithub} className=""/>
+        {/* GitHub */}
+      </Link>
     </header>
   );
 }
@@ -70,36 +83,41 @@ const Header = () => {
 const HeroSection = () => {
   return (
     <section className="bg-modern-architecture bg-cover bg-center lg:text-center
-      h-[clamp(640px,100svh,750px)] lg:h-[clamp(640px,100svh,800px)]"
+      grid grid-cols-1 grid-rows-[4fr,auto,6fr] md:grid-rows-[5fr,auto,5fr]
+      h-[clamp(640px,100svh,700px)] md:h-[clamp(640px,100svh,750px)] lg:h-[clamp(640px,100svh,800px)]"
     >
-      <Header />
+      <div className="">
+        <Header />
+      </div>
 
-      
+      <div className="">
 
-      <h1 className="text-5xl md:text-6xl font-semibold px-5 font-display mt-24 sm:mt-36 md:mt-40 lg:mt-52 md:px-6 lg:px-8 max-w-screen-lg lg:mx-auto">
-        Combining Visual Creativity with Technical Excellence
-      </h1>
+        <h1 className="text-5xl md:text-6xl font-semibold px-5 font-display md:px-6 lg:px-8 max-w-screen-lg lg:mx-auto pr-10">
+          Combining Visual Creativity with Technical Excellence
+        </h1>
 
-      <h2 className="text-orange-600 px-5 mt-3 md:px-6 lg:px-8 text-lg md:text-xl">
-        Software Development and Design
-      </h2>
+        <h2 className="text-orange-600 px-5 mt-3 md:px-6 lg:px-8 text-lg md:text-xl">
+          Software Development and Design
+        </h2>
 
-      <div className="flex gap-5 mt-10 px-5 md:px-6 lg:px-8 lg:justify-center">
-        <Link 
-          to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
-          className="backdrop-blur-sm border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
-        >
-          <FontAwesomeIcon icon={faLinkedin} className="mr-2"/>
-          LinkedIn
-        </Link>
+        {/* <div className="flex gap-5 mt-10 px-5 md:px-6 lg:px-8 lg:justify-center">
+          <Link 
+            to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
+            className="backdrop-blur-sm border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
+          >
+            <FontAwesomeIcon icon={faLinkedin} className="mr-2"/>
+            LinkedIn
+          </Link>
 
-        <Link 
-          to="https://github.com/alexanderhorner"
-          className="backdrop-blur-sm border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
-        >
-          <FontAwesomeIcon icon={faGithub} className="mr-2"/>
-          GitHub
-        </Link>
+          <Link 
+            to="https://github.com/alexanderhorner"
+            className="backdrop-blur-sm border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
+          >
+            <FontAwesomeIcon icon={faGithub} className="mr-2"/>
+            GitHub
+          </Link>
+        </div> */}
+
       </div>
 
     </section>
@@ -109,9 +127,9 @@ const HeroSection = () => {
 const AboutMeSection = () => {
 
   return (
-    <section className="bg-white py-20 px-5 md:px-6 lg:px-8 xl:px-20 max-w-screen-xl mx-auto">
+    <section className="bg-white py-20 md:py-32 px-5 md:px-6 lg:px-8 xl:px-20 max-w-screen-xl mx-auto">
 
-      <div className="prose prose-strong:underline prose-strong:decoration-orange-500 prose-strong:underline-offset-2 prose-strong:decoration-from-font prose-headings:font-display">
+      <div className="prose prose-orange md:prose-lg prose-strong:underline prose-strong:decoration-orange-500 prose-strong:underline-offset-2 prose-strong:decoration-from-font prose-headings:font-display">
         <ElevatorPitch />
       </div>
 
@@ -129,10 +147,10 @@ const AboutMeSection = () => {
 
 const PorfolioSection = () => {
   return (
-    <section className="bg-gray-100 py-20 px-5 md:px-6 lg:px-8 xl:px-20 max-w-screen-xl mx-auto">
+    <section className="bg-gray-100 py-20 px-5 md:px-6 lg:px-8 xl:px-20 xl:py-24 max-w-screen-xl mx-auto">
 
-        <div className="grid gap-y-10 gap-x-10 grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] grid-auto-flow-dense">
-          <div className="prose col-span-1 custom-grid-two-rows:col-span-2">
+        <div className="grid gap-y-10 gap-x-10 grid-cols-[repeat(auto-fill,minmax(min(344px,100%),1fr))]">
+          <div className="prose prose-orange md:prose-lg col-span-1 md:col-span-2">
             <PortfolioIntroduction />
           </div>
 
@@ -189,11 +207,11 @@ const CallToAction = () => {
   return (
     <section className="py-32 px-4 bg-white">
       <div className="text-center">
-        <p className="text-2xl font-semibold text-gray-800 mb-2">Interested in working together?</p>
-        <p className="text-lg text-gray-600">Let's connect.</p>
+        <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">Interested in working together?</p>
+        <p className="text-lg md:text-xl text-gray-600">Let's connect.</p>
       </div>
 
-      <div className="flex justify-center gap-5 mt-8">
+      <div className="flex justify-center gap-5 mt-8 md:text-lg">
         <Link 
           to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
           className="border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"

@@ -30,7 +30,7 @@ export const ProjectPage = ({ children }: ProjectPageProps) => {
           <FontAwesomeIcon icon={faXmark} className="text-base"/>
         </Link>
 
-        <article className="prose">
+        <article className="prose prose-orange md:prose-lg">
           {children}
         </article>
 

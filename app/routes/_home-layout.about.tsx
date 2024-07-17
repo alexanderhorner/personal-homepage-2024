@@ -27,7 +27,7 @@ export default function About() {
           <FontAwesomeIcon icon={faXmark} className="text-base"/>
         </Link>
 
-        <article className="prose">
+        <article className="prose prose-orange md:prose-lg ">
           <AboutMe/>
         </article>
 
