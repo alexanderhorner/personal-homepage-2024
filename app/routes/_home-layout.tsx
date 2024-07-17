@@ -133,13 +133,25 @@ const AboutMeSection = () => {
         <ElevatorPitch />
       </div>
 
-      <Link 
-        to="/about" 
-        preventScrollReset
-        className="border border-gray-900 border-solid py-2 px-3 inline-block mt-5 hover:bg-gray-100 transition-colors"
-      >
-        More about me
-      </Link>
+      <div className="flex gap-5 mt-10 md:text-lg">
+
+        <Link 
+          to="/about" 
+          preventScrollReset
+          className="border border-gray-900 border-solid py-2 px-3 inline-block mt-5 hover:bg-gray-100 transition-colors"
+        >
+          More about me
+        </Link>
+
+        <Link 
+          to="/resume" 
+          preventScrollReset
+          className="border border-gray-900 border-solid py-2 px-3 inline-block mt-5 hover:bg-gray-100 transition-colors"
+        >
+          My resume
+        </Link>
+
+      </div>
 
     </section>
   )

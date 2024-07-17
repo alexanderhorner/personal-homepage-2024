@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { json, useParams } from "@remix-run/react";
-import { ProjectPage } from "~/components/ProjectPage";
+import { ProseArticleModal } from "~/components/ProseArticleModal";
 import { projects } from "~/content/projects";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
@@ -36,8 +36,8 @@ export default function ProjectThisPortfolio() {
   const ProjectContent = project.default;
 
   return (
-    <ProjectPage>
+    <ProseArticleModal>
       <ProjectContent />
-    </ProjectPage>
+    </ProseArticleModal>
   )
 }

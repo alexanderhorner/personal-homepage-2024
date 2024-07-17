@@ -1,10 +1,10 @@
-import AboutMe from "~/content/about-me.mdx";
+import Resume from "~/content/resume.mdx";
 import { ProseArticleModal } from "~/components/ProseArticleModal";
 
 export default function About() {
   return (
     <ProseArticleModal>
-      <AboutMe/>
+      <Resume/>
     </ProseArticleModal>
   )
 }
