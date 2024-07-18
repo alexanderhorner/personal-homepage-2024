@@ -8,7 +8,6 @@ import { projects } from "~/content/projects";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import ModernArchitecture from "~/assets/images/modern-architecture.jpg";
-// import ModernArchitectureDesktop from "~/assets/images/modern-architecture.jpg";
 
 export const meta: MetaFunction = () => {
   return [
