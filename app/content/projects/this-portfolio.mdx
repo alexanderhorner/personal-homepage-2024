@@ -33,8 +33,10 @@ With the animations, I aimed to achieve a more native feel for the website. Whil
 
 I wanted to display other pages as cards overlaying the home page while maintaining proper routing, so the pages could be correctly linked and rendered on the server as they are displayed on the website. This also ensures accessibility for search engines and users with JavaScript disabled, enhancing interactivity before JavaScript loads.
 
-{/* <img src={PortfolioDialog} alt="Screenshot of Portfolio Modal" /> */}
+<img src={PortfolioDialog} alt="Screenshot of Portfolio Modal" />
 
 Another challenge was accessibility. When a modal is open, the rest of the page should be ignored by screen readers and keyboard navigation. While there are JS solutions for this, I wanted to ensure compatibility with routing and server-side rendering, even before JavaScript hydration. To achieve this, I used the browser's native dialog component. This was tricky because it needed to be opened imperatively on the client to enable the focus trap while being rendered on the server for accessibility. I pre-rendered it with the `open` attribute (rendering it but not as a modal) and then removed the attribute on the client, reopening it with JavaScript to activate the modal features.
 
 Animating transitions was another challenge. The router typically removes the page when navigating away, but I wanted to animate the page out first. I solved this using a combination of `useState`, React keys, and `cloneElement`.
+
+Images are optimized automatically at build time and loaded lazily to improve performance. 
