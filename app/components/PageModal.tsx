@@ -19,6 +19,7 @@ export const PageModal = ({ children }: PropsWithChildren) => {
         <Link
           autoFocus
           to="/"
+          aria-label="Close modal"
           preventScrollReset
           className="sticky top-8 ml-auto text-2xl et
             text-gray-500 bg-gray-100 hover:bg-gray-200 transition-colors
