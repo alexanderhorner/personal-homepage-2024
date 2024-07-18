@@ -1,12 +1,16 @@
+import PortfolioScreenshot from "~/assets/images/portfolio-screenshot.png"
+import PortfolioDialog from "~/assets/images/this-portfolio-dialog.png"
+
 export const id = "this-portfolio"
 export const title = "This Portfolio"
 export const description = "The website you're currently visiting is a portfolio I built to showcase my work and skills as a software developer. It is a Remix application that uses MDX for content management and Tailwind CSS for styling."
 export const date = "2024"
-export const img = "/images/portfolio-screenshot.png"
+export const img = PortfolioScreenshot
+
 
 # {title}
 
-![Screenshot of Portfolio](/images/portfolio-screenshot.png)
+<img src={PortfolioScreenshot} alt="Screenshot of Portfolio" />
 
 - **Technologies**: Remix, MDX, Tailwind CSS, React Framer Motion
 - **Design**: Professional, clean, modern, inspired by Polestar and Teenage Engineering
@@ -29,7 +33,7 @@ With the animations, I aimed to achieve a more native feel for the website. Whil
 
 I wanted to display other pages as cards overlaying the home page while maintaining proper routing, so the pages could be correctly linked and rendered on the server as they are displayed on the website. This also ensures accessibility for search engines and users with JavaScript disabled, enhancing interactivity before JavaScript loads.
 
-![Screenshot of Portfolio Modal](/images/this-portfolio-dialog.png)
+{/* <img src={PortfolioDialog} alt="Screenshot of Portfolio Modal" /> */}
 
 Another challenge was accessibility. When a modal is open, the rest of the page should be ignored by screen readers and keyboard navigation. While there are JS solutions for this, I wanted to ensure compatibility with routing and server-side rendering, even before JavaScript hydration. To achieve this, I used the browser's native dialog component. This was tricky because it needed to be opened imperatively on the client to enable the focus trap while being rendered on the server for accessibility. I pre-rendered it with the `open` attribute (rendering it but not as a modal) and then removed the attribute on the client, reopening it with JavaScript to activate the modal features.
 

@@ -1,13 +1,14 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import { Link, Outlet, useLocation, useNavigate, useOutlet } from "@remix-run/react";
-import { AnimatePresence, LayoutGroup, MotionConfig, motion } from "framer-motion";
-import { cloneElement, useState } from "react";
-import ElevatorPitch from "~/content/elevator-pitch.mdx"
-import PortfolioIntroduction from "~/content/portfolio-introduction.mdx"
-import AboutMe from "~/content/about-me.mdx"
+import { Link, useLocation, useOutlet } from "@remix-run/react";
+import { AnimatePresence } from "framer-motion";
+import { cloneElement } from "react";
+import ElevatorPitch from "~/content/elevator-pitch.mdx";
+import PortfolioIntroduction from "~/content/portfolio-introduction.mdx";
 import { projects } from "~/content/projects";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import ModernArchitecture from "~/assets/images/modern-architecture.jpg";
+// import ModernArchitectureDesktop from "~/assets/images/modern-architecture.jpg";
 
 export const meta: MetaFunction = () => {
   return [
@@ -20,7 +21,7 @@ export const links: LinksFunction = () => {
   return [
     {
       rel: "preload",
-      href: "/images/modern-architecture-q60-x0.5.webp",
+      href: ModernArchitecture,
       as: "image",
     },
   ];
@@ -62,7 +63,8 @@ const Header = () => {
     <header className="flex items-center justify-left gap-4 px-5 py-6 md:px-6 lg:px-8">
       <span className="text-orange-600 mr-auto font-display font-medium">Alexander Horner</span>
       <Link 
-        to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
+        to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0"
+        aria-label="LinkedIn of Alexander Horner" 
         className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
       >
         <FontAwesomeIcon icon={faLinkedin} className=""/>
@@ -71,6 +73,7 @@ const Header = () => {
 
       <Link 
         to="https://github.com/alexanderhorner"
+        aria-label="GitHub of Alexander Horner"
         className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
       >
         <FontAwesomeIcon icon={faGithub} className=""/>
@@ -82,10 +85,12 @@ const Header = () => {
 
 const HeroSection = () => {
   return (
-    <section className="bg-modern-architecture bg-cover bg-center lg:text-center
+    <section className=" bg-cover bg-center lg:text-center relative
       grid grid-cols-1 grid-rows-[4fr,auto,6fr] md:grid-rows-[5fr,auto,5fr]
       h-[clamp(640px,100svh,700px)] md:h-[clamp(640px,100svh,750px)] lg:h-[clamp(640px,100svh,800px)]"
     >
+      <img loading="lazy" src={ModernArchitecture} alt="Modern Architecture" className="absolute inset-0 w-full h-full object-cover -z-10" />
+
       <div className="">
         <Header />
       </div>
@@ -197,7 +202,7 @@ export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItem
       >
 
         <div>
-          <img src={img} alt="Forrest" className="w-full aspect-video object-cover" width={1920} height={1080}/>
+          <img loading="lazy" src={img} alt="Project Thumnail" className="w-full aspect-video object-cover" width={1920} height={1080}/>
         </div>      
 
         <div className="p-4">

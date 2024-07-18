@@ -1,12 +1,15 @@
+import Portfolio2022Screenshot from "~/assets/images/portfolio-2022.png"
+import Portfolio2022ContactScreenshot from "~/assets/images/portfolio-2022-contact.png"
+
 export const id = "portfolio-2022"
 export const title = "Portfolio 2022"
 export const description = "A modern and playful portfolio site built without frameworks, using serverless hosting and edge computing on Google Firebase."
 export const date = "2022"
-export const img = "/images/portfolio-2022.png"
+export const img = Portfolio2022Screenshot
 
 # {title}
 
-![Screenshot of 2022 Portfolio](/images/portfolio-2022.png)
+<img src={Portfolio2022Screenshot} alt="Screenshot of 2022 Portfolio" />
 
 ## Summary
 
@@ -28,6 +31,6 @@ I needed a way for people to contact me without sharing my email directly. I imp
 
 However, I quickly realized that bots were frequently targeting the contact form, resulting in a significant amount of spam. To counter this, I integrated Google reCAPTCHA on both the front end and in the cloud function. This effectively eliminated the spam.
 
-![Screenshot of Contact Form](/images/portfolio-2022-contact.png)
+<img src={Portfolio2022ContactScreenshot} alt="Screenshot of Contact Form" />
 
 [Visit Site](https://personal-homepage2022.web.app)
