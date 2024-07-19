@@ -4,5 +4,6 @@ export const getOpengraphMetaTags = (url: string, title: string, description: st
     { property: "og:description", content: description },
     { property: "og:url", content: url },
     { property: "og:image", content: imgUrl },
+    { property: "og:type", content: "website" }
   ];
 }

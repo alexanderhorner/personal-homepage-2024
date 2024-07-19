@@ -8,7 +8,7 @@ import { projects } from "~/content/articles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import ModernArchitecture from "~/assets/images/modern-architecture.jpg";
-import WebsiteScreenshotOg from "~/assets/images/alexander-horner-com-og.png";
+import WebsiteScreenshotOg from "~/assets/images/alexander-horner-com-og-1200.jpg";
 import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
