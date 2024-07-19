@@ -31,7 +31,12 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [
     { title: MetaBaseTitle },
     { name: "description", content: MetaDefaultDescription },
-    ...getOpengraphMetaTags(currentUrl, MetaBaseTitle, MetaDefaultDescription, MetaDefaultOgImage),
+    ...getOpengraphMetaTags(
+      currentUrl, 
+      MetaBaseTitle, 
+      MetaDefaultDescription, 
+      new URL(MetaDefaultOgImage, currentUrl).toString()
+    ),
   ];
 };
 

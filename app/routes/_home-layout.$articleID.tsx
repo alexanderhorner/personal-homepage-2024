@@ -77,11 +77,11 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 
   const { title, description, img } = getArticle(articleID);
 
-  const ogImage = img ? new URL(img, articleUrl) : new URL(MetaDefaultOgImage, articleUrl)
+  const ogImageUrl = img ? new URL(img, articleUrl) : new URL(MetaDefaultOgImage, articleUrl)
 
 
   return [
     { title: `${title} - ${MetaBaseTitle}` },
-    ...getOpengraphMetaTags(articleUrl, title, description, ogImage.toString()),
+    ...getOpengraphMetaTags(articleUrl, title, description, ogImageUrl.toString()),
   ];
 };
