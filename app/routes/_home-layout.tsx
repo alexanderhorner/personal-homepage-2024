@@ -1,18 +1,39 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import { Link, useLocation, useOutlet } from "@remix-run/react";
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { Link, json, useLocation, useOutlet } from "@remix-run/react";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement } from "react";
 import ElevatorPitch from "~/content/elevator-pitch.mdx";
 import PortfolioIntroduction from "~/content/portfolio-introduction.mdx";
-import { projects } from "~/content/projects";
+import { projects } from "~/content/articles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import ModernArchitecture from "~/assets/images/modern-architecture.jpg";
+import WebsiteScreenshotOg from "~/assets/images/alexander-horner-com-og.png";
 
-export const meta: MetaFunction = () => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const currentUrl = new URL(request.url)
+
+  return json({ currentUrl });
+};
+
+export const MetaBaseTitle = "Alexander Horner"
+export const MetaDefaultDescription = "I am Alexander Horner, a developer and designer. Welcome to my personal homepage!"
+export const MetaDefaultOgImage = WebsiteScreenshotOg
+;
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) {
+    throw new Error("No data provided");
+  }
+
+  const { currentUrl } = data;
+
   return [
-    { title: "Alexander Horner" },
-    { name: "description", content: "I am Alexander Horner, a developer and designer. Welcome to my personal homepage!" },
+    { title: MetaBaseTitle },
+    { name: "description", content: MetaDefaultDescription },
+    { property: "og:title", content: MetaBaseTitle },
+    { property: "og:description", content: MetaDefaultDescription },
+    { property: "og:url", content: currentUrl },
+    { property: "og:image", content: new URL(MetaDefaultOgImage, currentUrl) }
   ];
 };
 
@@ -104,24 +125,6 @@ const HeroSection = () => {
           Software Development and Design
         </h2>
 
-        {/* <div className="flex gap-5 mt-10 px-5 md:px-6 lg:px-8 lg:justify-center">
-          <Link 
-            to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
-            className="backdrop-blur-sm border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
-          >
-            <FontAwesomeIcon icon={faLinkedin} className="mr-2"/>
-            LinkedIn
-          </Link>
-
-          <Link 
-            to="https://github.com/alexanderhorner"
-            className="backdrop-blur-sm border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
-          >
-            <FontAwesomeIcon icon={faGithub} className="mr-2"/>
-            GitHub
-          </Link>
-        </div> */}
-
       </div>
 
     </section>
@@ -140,7 +143,7 @@ const AboutMeSection = () => {
       <div className="flex gap-5 mt-10 md:text-lg">
 
         <Link 
-          to="/about" 
+          to="/about-me" 
           preventScrollReset
           className="border border-gray-900 border-solid py-2 px-3 inline-block mt-5 hover:bg-gray-100 transition-colors"
         >
