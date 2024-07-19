@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import ModernArchitecture from "~/assets/images/modern-architecture.jpg";
 import WebsiteScreenshotOg from "~/assets/images/alexander-horner-com-og.png";
+import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const currentUrl = new URL(request.url)
@@ -30,10 +31,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [
     { title: MetaBaseTitle },
     { name: "description", content: MetaDefaultDescription },
-    { property: "og:title", content: MetaBaseTitle },
-    { property: "og:description", content: MetaDefaultDescription },
-    { property: "og:url", content: currentUrl },
-    { property: "og:image", content: new URL(MetaDefaultOgImage, currentUrl) }
+    ...getOpengraphMetaTags(currentUrl, MetaBaseTitle, MetaDefaultDescription, MetaDefaultOgImage),
   ];
 };
 

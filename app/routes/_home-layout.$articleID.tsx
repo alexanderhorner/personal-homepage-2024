@@ -4,6 +4,7 @@ import { i } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
 import { ProseArticleModal } from "~/components/ProseArticleModal";
 import { articles } from "~/content/articles";
 import { MetaBaseTitle, MetaDefaultOgImage } from "./_home-layout";
+import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const { articleID } = params;
@@ -77,19 +78,11 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 
   const { title, description, img } = getArticle(articleID);
 
-  const ogImage = img ? [
-    { property: "og:image", content: new URL(img, articleUrl) },
-  ] : [
-    { property: "og:image", content: new URL(MetaDefaultOgImage, articleUrl) },
-  ];
+  const ogImage = img ? new URL(img, articleUrl) : new URL(MetaDefaultOgImage, articleUrl)
 
 
   return [
     { title: `${title} - ${MetaBaseTitle}` },
-    { name: "description", content: description },
-    ...ogImage,
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-    { property: "og:url", content: articleUrl },
+    ...getOpengraphMetaTags(articleUrl, title, description, ogImage.toString()),
   ];
 };
