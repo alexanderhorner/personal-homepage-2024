@@ -1,6 +1,5 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { MetaFunction, json, useParams } from "@remix-run/react";
-import { i } from "node_modules/vite/dist/node/types.d-aGj9QkWt";
 import { ProseArticleModal } from "~/components/ProseArticleModal";
 import { articles } from "~/content/articles";
 import { MetaBaseTitle, MetaDefaultOgImage } from "./_home-layout";

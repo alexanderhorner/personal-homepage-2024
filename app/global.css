@@ -1,11 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* .bg-modern-architecture {
-  background-image: url('/images/modern-architecture-q70-x0.5.jpg');
-
-  @supports (background-image: url('/images/modern-architecture-q60-x0.5.webp')) {
-    background-image: url('/images/modern-architecture-q60-x0.5.webp');
-  }
-} */

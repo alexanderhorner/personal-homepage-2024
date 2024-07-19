@@ -20,7 +20,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export const MetaBaseTitle = "Alexander Horner"
 export const MetaDefaultDescription = "I am Alexander Horner, a developer and designer. Welcome to my personal homepage!"
 export const MetaDefaultOgImage = WebsiteScreenshotOg
-;
+
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data) {
     throw new Error("No data provided");
