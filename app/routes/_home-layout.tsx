@@ -70,7 +70,7 @@ export default function Index() {
 
       <AnimatedOutlet />
 
-      <PorfolioSection/>
+      <ProjectsSection/>
 
       <CallToAction />
 
@@ -78,8 +78,6 @@ export default function Index() {
     </div>
   );
 }
-
-
 
 const Header = () => {
   return (
@@ -167,9 +165,9 @@ const AboutMeSection = () => {
   )
 }
 
-const PorfolioSection = () => {
+const ProjectsSection = () => {
   return (
-    <section className="bg-gray-100 py-20 px-5 md:px-6 lg:px-8 xl:px-20 xl:py-24 max-w-screen-xl mx-auto">
+    <section id="projects" className="bg-gray-100 py-20 px-5 md:px-6 lg:px-8 xl:px-20 xl:py-24 max-w-screen-xl mx-auto">
 
         <div className="grid gap-y-10 gap-x-10 grid-cols-[repeat(auto-fill,minmax(min(344px,100%),1fr))]">
           <div className="prose prose-orange md:prose-lg col-span-1 md:col-span-2">
