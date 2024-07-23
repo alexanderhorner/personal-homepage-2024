@@ -54,7 +54,7 @@ export function PageDialog({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="absolute inset-0 bg-black bg-opacity-40"
+      className="absolute inset-0 bg-black bg-opacity-40 z-10"
     />
     
     {/* Dialog */}

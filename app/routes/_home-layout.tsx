@@ -201,7 +201,7 @@ export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItem
     <Link to={id} className="block" preventScrollReset>
 
       <div 
-        className="bg-white rounded-md overflow-hidden block shadow-xl hover:shadow-2xl transition-all duration-500" 
+        className="bg-white rounded-md overflow-hidden block shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all duration-500" 
       >
 
         <div>
