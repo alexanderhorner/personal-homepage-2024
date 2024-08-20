@@ -209,7 +209,7 @@ export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItem
         </div>      
 
         <div className="p-4">
-          <h3 className="font-bold leading-snug">
+          <h3 className="font-bold leading-snug truncate">
             {title}
           </h3>
           <div className="text-gray-600 mt-1 line-clamp-2 leading-snug">

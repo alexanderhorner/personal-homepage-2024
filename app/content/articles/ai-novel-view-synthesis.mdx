@@ -1,0 +1,80 @@
+import Thumbnail from "~/assets/images/ai-novel-view-synthesis/thumbnail.jpeg"
+import DatasetComparison from "~/assets/images/ai-novel-view-synthesis/dataset-comparison.png"
+import SceneExample from "~/assets/images/ai-novel-view-synthesis/3d-scene.jpeg"
+
+export const id = "ai-novel-view-synthesis"
+export const title = "View Synthesis of Three-Dimensional Spaces Using Artificial Intelligence"
+export const description = "An exploration of Novel View Synthesis, focusing on creating new perspectives of 3D scenes using Conditional GANs, with practical applications in automotive and parking systems."
+export const date = "2022"
+export const img = Thumbnail
+
+# {title}
+
+<img src={Thumbnail} alt="View Synthesis of Three-Dimensional Spaces" />
+
+For my *W-Seminar* project, I explored an intriguing and highly relevant topic in artificial intelligence: the synthesis of new views of three-dimensional spaces. This field, known as *Novel View Synthesis*, aims to develop algorithms capable of generating new views of a 3D scene based on a limited number of existing views.
+
+## Objective and Application
+
+The primary goal of my project was to propose and optimize a new method for *Novel View Synthesis*. Additionally, I examined and compared established methods. One practical application of this technology is generating a bird's-eye view of a parking lot based on side and top-down images, which could significantly enhance the functionality of parking sensors or automotive cameras. This technique could eventually be used in self-driving cars to provide a 360° view of the surroundings, similar to how Tesla has successfully implemented it in their Full-Self-Driving Beta system.
+
+**[Add Image: Example of Novel View Synthesis]**
+
+## Methodology and Testing
+
+To evaluate the different approaches, I created a virtual 3D scene using the Unity engine, where cameras were placed in various positions. These cameras captured images of randomly positioned cars within a 5x5 grid. To test the effectiveness of the methods, I defined different levels of difficulty, which varied based on the rotation intervals and positions of the cars.
+
+- **Easy Difficulty:** Minimal rotation of the cars, no additional positional variation.
+- **Medium Difficulty:** Random rotation of the cars between 0° and 295°.
+- **Highest Difficulty:** In addition to random rotation, the positions of the cars varied slightly within a small range.
+
+The dataset consisted of 5100 image pairs, with 4000 pairs used for training, 1000 for testing, and 100 for validation.
+
+<img src={SceneExample} alt="3D Scene Example" />
+
+<img src={DatasetComparison} alt="Comparison of Datasets" />
+
+## Utilizing Conditional GANs
+
+For view synthesis, I proposed using the image-to-image translation capabilities of *Conditional Generative Adversarial Networks* (cGANs), based on the groundbreaking *pix2pix* work from 2016. The cGANs were trained to learn the relationship between two views of a 3D scene, allowing them to generate a new view from an input view.
+
+The tests demonstrated that cGANs could indeed learn this relationship and be successfully applied to view synthesis. However, in more complex scenes, the network struggled to capture details, resulting in artifacts. These issues might be addressed through fine-tuning the hyperparameters and further optimizations.
+
+
+## Results
+
+This is a video of the learning process with the easy dataset:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VyOL07NOykU?si=2_ZUg9Z9bnrsI_5J" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+And here is the video of the learning process with the medium dataset:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/A7uJkaP5XHU?si=hbuCtI__HZUHMQVI" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+And here the first training session with the highest difficulty dataset:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ItppnUTTeIU?si=vd-DDuIstvIhUi5t" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+The network seemed to struggle with the more complex scenes, as expected. This is why I tried optimizing the resuts by implementing "LSGAN". First I tried it with the easy dataset:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yWaJ2tab-5c?si=9s6zYjctaDJwDW_c" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+The results were promising, and the training process seemed to be more stable. I then tried the hard dataset again:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DUSF1YBQe14?si=l-wr8FQh2Ms2_5Gs" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+Here is the final result with LSGAN and a special dataset with asphalt texture and shadows enabled: 
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NscYBBiJ2E0?si=qYEGGszCPqyxDIF-" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+And here is a side by side comparison between CGAN and LSGAN:
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BdhEtoKWdFc?si=GXCXVDKKhnKxKaSc" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+## Conclusion
+
+My project demonstrated that *Novel View Synthesis* using cGANs is a promising approach for generating new perspectives of 3D scenes. This technology could play a significant role in applications such as automated vehicle navigation in the future. The challenges encountered in rendering details and handling complex scenes also present exciting opportunities for future research and development.
+
+The full document is published on figshare:
+
+<iframe src="https://widgets.figshare.com/articles/26789242/embed?show_title=1" width="568" height="351" allowFullScreen frameBorder="0"></iframe>
