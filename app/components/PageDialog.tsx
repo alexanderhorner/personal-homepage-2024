@@ -64,7 +64,7 @@ export function PageDialog({
       onCancel={handleDialogCancel}
       onClick={handleContentClick}
       layoutScroll
-      className="fixed inset-0 overflow-auto overscroll-contain backdrop:hidden m-0 max-w-none max-h-none bg-transparent h-auto w-auto"
+      className="fixed inset-0 overflow-auto overscroll-contain backdrop:hidden m-0 max-w-none max-h-none bg-transparent h-auto w-auto z-20"
     >
       {children}
     </motion.dialog>
