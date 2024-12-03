@@ -1,6 +1,4 @@
-import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Link, json, useLocation, useOutlet } from "@remix-run/react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { cloneElement } from "react";
 import ElevatorPitch from "~/content/elevator-pitch.mdx";
 import PortfolioIntroduction from "~/content/portfolio-introduction.mdx";
@@ -10,11 +8,12 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import ModernArchitecture from "~/assets/images/modern-architecture.jpg";
 import WebsiteScreenshotOg from "~/assets/images/alexander-horner-com-og-1200.jpg";
 import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
+import { Link, LinksFunction, LoaderFunctionArgs, MetaFunction, useLocation, useOutlet } from "react-router";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const currentUrl = new URL(request.url)
 
-  return json({ currentUrl });
+  return { currentUrl: String(currentUrl) };
 };
 
 export const MetaBaseTitle = "Alexander Horner"
@@ -92,7 +91,7 @@ const Header = () => {
         {/* LinkedIn */}
       </Link>
 
-      <Link 
+      <Link
         to="https://github.com/alexanderhorner"
         aria-label="GitHub of Alexander Horner"
         className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"

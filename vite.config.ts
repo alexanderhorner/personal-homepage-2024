@@ -1,11 +1,18 @@
-import { vitePlugin as remix } from "@remix-run/dev";
+import { reactRouter } from "@react-router/dev/vite";
+import autoprefixer from "autoprefixer";
+import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import mdx from '@mdx-js/rollup'
-import { imagetools } from 'vite-imagetools'
+import mdx from "@mdx-js/rollup"
+import { imagetools } from "vite-imagetools";
 import path from "path";
 
 export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [tailwindcss, autoprefixer],
+    },
+  },
   plugins: [
     mdx(),
     imagetools({
@@ -27,14 +34,8 @@ export default defineConfig({
         return url.searchParams
       },
     }),
-    remix({
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-      },
-    }),
-    tsconfigPaths(),
+    reactRouter(), 
+    tsconfigPaths()
   ],
   resolve: {
     alias: {

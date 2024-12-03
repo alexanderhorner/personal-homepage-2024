@@ -1,9 +1,8 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { MetaFunction, json, useParams } from "@remix-run/react";
 import { ProseArticleModal } from "~/components/ProseArticleModal";
 import { articles } from "~/content/articles";
-import { MetaBaseTitle, MetaDefaultOgImage } from "./_home-layout";
+import { MetaBaseTitle, MetaDefaultOgImage } from "./HomeLayout";
 import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
+import { LoaderFunctionArgs, MetaFunction, useParams } from "react-router";
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const { articleID } = params;
@@ -18,13 +17,15 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     getArticle(articleID);
   } catch (error) {
     if (error === ArticleNotFoundError) {
-      throw json("Article Not Found", { status: 404 });
+      // throw json("Article Not Found", { status: 404 });
+      throw new Response("Article Not Found", { status: 404 });
     } else {
       throw error;
     }
   }
 
-  return json({ articleUrl });
+  // return json({ articleUrl });
+  return { articleUrl };
 };
 
 const ArticleNotFoundError = new Error("Article Not Found");
@@ -82,6 +83,6 @@ export const meta: MetaFunction<typeof loader> = ({ params, data }) => {
 
   return [
     { title: `${title} - ${MetaBaseTitle}` },
-    ...getOpengraphMetaTags(articleUrl, title, description, ogImageUrl.toString()),
+    ...getOpengraphMetaTags(String(articleUrl), title, description, ogImageUrl.toString()),
   ];
 };
