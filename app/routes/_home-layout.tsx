@@ -108,7 +108,7 @@ const HeroSection = () => {
   return (
     <section className=" bg-cover bg-center lg:text-center relative
       grid grid-cols-1 grid-rows-[4fr,auto,6fr] md:grid-rows-[5fr,auto,5fr]
-      h-[clamp(640px,100svh,700px)] md:h-[clamp(640px,100svh,750px)] lg:h-[clamp(640px,100svh,800px)]"
+      h-[clamp(640px,100svh,900px)] md:h-[clamp(640px,100svh,1050px)] lg:h-[clamp(640px,100svh,1400px)]"
     >
       <img src={ModernArchitecture} alt="Modern Architecture" className="absolute inset-0 w-full h-full object-cover -z-10" />
 
