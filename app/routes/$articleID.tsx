@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { MetaFunction, json, useParams } from "@remix-run/react";
-import { ProseArticleModal } from "~/components/ProseArticleModal";
+import { Link, MetaFunction, json, useParams } from "@remix-run/react";
 import { articles } from "~/content/articles";
-import { MetaBaseTitle, MetaDefaultOgImage } from "./_home-layout";
 import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
+import { MetaBaseTitle, MetaDefaultOgImage } from "./_index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   const { articleID } = params;
@@ -51,13 +52,48 @@ const useArticle = () => {
   return article;
 }
 
-export default function ProjectThisPortfolio() {
+const Header = () => {
+  return (
+    <div className="sticky inset-0 bottom-auto h-20 article-header">
+      <div className="flex items-center justify-left gap-4 px-5 py-6 md:px-6 lg:px-8">
+        
+        <Link to="/" className="text-orange-600 mr-auto font-display font-medium drop-shadow-sm text-shadow-for-visibility">
+          Alexander Horner
+        </Link>
+        
+        <Link 
+          to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0"
+          aria-label="LinkedIn of Alexander Horner" 
+          className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+        >
+          <FontAwesomeIcon icon={faLinkedin} className=""/>
+          {/* LinkedIn */}
+        </Link>
+
+        <Link 
+          to="https://github.com/alexanderhorner"
+          aria-label="GitHub of Alexander Horner"
+          className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+        >
+          <FontAwesomeIcon icon={faGithub} className=""/>
+          {/* GitHub */}
+        </Link>
+
+      </div>
+    </div>
+  )
+}
+
+export default function ArticlePage() {
   const { default: ArticleContent } = useArticle();
   
   return (
-    <ProseArticleModal>
-      <ArticleContent />
-    </ProseArticleModal>
+    <div>
+      <Header/>
+      <div className="prose prose-orange md:prose-lg p-12">
+        <ArticleContent />
+      </div>
+    </div>
   )
 }
 

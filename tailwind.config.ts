@@ -7,7 +7,7 @@ export default {
     extend: {
       backgroundImage: {
         // To support webp, @support is needed. "bg-modern-architecture" is a custom class in global.css
-        // "modern-architecture": "url('/images/modern-architecture-q70-x0.5.jpg')", 
+        // "modern-architecture": "url('/images/modern-architecture-q70-x0.5.jpg')",
       },
       screens: {
         'custom-grid-two-rows': '760px',

@@ -1,7 +1,5 @@
 import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Link, json, useLocation, useOutlet } from "@remix-run/react";
-import { AnimatePresence } from "framer-motion";
-import { cloneElement } from "react";
 import ElevatorPitch from "~/content/elevator-pitch.mdx";
 import PortfolioIntroduction from "~/content/portfolio-introduction.mdx";
 import { projects } from "~/content/articles";
@@ -50,25 +48,12 @@ export const links: LinksFunction = () => {
   ];
 };
 
-const AnimatedOutlet = (): React.JSX.Element => {
-  const { pathname } = useLocation();
-  const element = useOutlet();
-
-  return (
-    <AnimatePresence initial={false}>
-      {element && cloneElement(element, { key: pathname })}
-    </AnimatePresence>
-  );
-};
-
 
 export default function Index() {
   return (
     <div className="relative">
       <HeroSection />
       <AboutMeSection />
-
-      <AnimatedOutlet />
 
       <ProjectsSection/>
 
@@ -104,6 +89,38 @@ const Header = () => {
   );
 }
 
+const NewHeader = () => {
+  return (
+    <div className="fixed inset-0 bottom-auto h-20 article-header z-10">
+      <div className="flex items-center justify-left gap-4 px-5 py-6 md:px-6 lg:px-8">
+        
+        <Link to="/" className="text-orange-600 mr-auto font-display font-medium drop-shadow-sm text-shadow-for-visibility">
+          Alexander Horner
+        </Link>
+        
+        <Link 
+          to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0"
+          aria-label="LinkedIn of Alexander Horner" 
+          className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center text-shadow-for-visibility"
+        >
+          <FontAwesomeIcon icon={faLinkedin} className=""/>
+          {/* LinkedIn */}
+        </Link>
+
+        <Link 
+          to="https://github.com/alexanderhorner"
+          aria-label="GitHub of Alexander Horner"
+          className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center text-shadow-for-visibility"
+        >
+          <FontAwesomeIcon icon={faGithub} className=""/>
+          {/* GitHub */}
+        </Link>
+
+      </div>
+    </div>
+  )
+}
+
 const HeroSection = () => {
   return (
     <section className=" bg-cover bg-center lg:text-center relative
@@ -113,7 +130,7 @@ const HeroSection = () => {
       <img src={ModernArchitecture} alt="Modern Architecture" className="absolute inset-0 w-full h-full object-cover -z-10" />
 
       <div className="">
-        <Header />
+        <NewHeader />
       </div>
 
       <div className="">
