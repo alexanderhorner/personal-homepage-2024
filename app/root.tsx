@@ -4,7 +4,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from "react-router";
 import "./global.css";
 import "@fontsource-variable/inter";
 import '@fontsource-variable/inter-tight';

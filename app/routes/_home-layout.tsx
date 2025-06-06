@@ -1,5 +1,5 @@
-import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Link, json, useLocation, useOutlet } from "@remix-run/react";
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "react-router";
+import { Link, useLocation, useOutlet } from "react-router";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement } from "react";
 import ElevatorPitch from "~/content/elevator-pitch.mdx";
@@ -14,7 +14,7 @@ import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const currentUrl = new URL(request.url)
 
-  return json({ currentUrl });
+  return Response.json({ currentUrl });
 };
 
 export const MetaBaseTitle = "Alexander Horner"
@@ -191,7 +191,7 @@ const ProjectsSection = () => {
 
 interface PortfolioItemProps {
   id: string;
-  img: string;
+  img: string | null;
   title: string;
   description: string;
 }
@@ -205,7 +205,7 @@ export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItem
       >
 
         <div>
-          <img loading="lazy" src={img} alt="Project Thumnail" className="w-full aspect-video object-cover" width={1920} height={1080}/>
+          <img loading="lazy" src={img ?? ''} alt="Project Thumnail" className="w-full aspect-video object-cover" width={1920} height={1080}/>
         </div>      
 
         <div className="p-4">
@@ -228,7 +228,7 @@ const CallToAction = () => {
     <section className="py-32 px-4 bg-white">
       <div className="text-center">
         <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">Interested in working together?</p>
-        <p className="text-lg md:text-xl text-gray-600">Let's connect.</p>
+        <p className="text-lg md:text-xl text-gray-600">Let&apos;s connect.</p>
       </div>
 
       <div className="flex justify-center gap-5 mt-8 md:text-lg">
