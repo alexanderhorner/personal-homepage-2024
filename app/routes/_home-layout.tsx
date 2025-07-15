@@ -255,8 +255,9 @@ const CallToAction = () => {
 const Footer = () => {
   return (
     <footer className="bg-gray-50 text-gray-600 py-10 text-center">
-      <div className="text-sm">
+      <div className="text-sm space-x-2">
          © 2024 Alexander Horner
+         <Link to="/privacy" className="underline">Privacy</Link>
       </div>
     </footer>
   )
