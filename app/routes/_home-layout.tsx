@@ -256,7 +256,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-50 text-gray-600 py-10 text-center">
       <div className="text-sm">
-         © 2024 Alexander Horner
+         © 2024 Alexander Horner <Link preventScrollReset to="/privacy" className="underline">Privacy</Link>
       </div>
     </footer>
   )

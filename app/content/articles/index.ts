@@ -7,6 +7,7 @@ import * as InteractiveEducation from "./interactive-education.mdx";
 import * as Resume from "./resume.mdx";
 import * as AboutMe from "./about-me.mdx";
 import * as AiNovelViewSynthesis from "./ai-novel-view-synthesis.mdx";
+import * as Privacy from "./privacy.mdx";
 
 export const projects = [
   ThisPortfolio,
@@ -22,4 +23,5 @@ export const articles = [
   ...projects,
   Resume,
   AboutMe,
+  Privacy,
 ];
