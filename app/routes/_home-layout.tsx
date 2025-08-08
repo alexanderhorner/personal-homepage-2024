@@ -83,19 +83,19 @@ const Header = () => {
   return (
     <header className="flex items-center justify-left gap-4 px-5 py-6 md:px-6 lg:px-8">
       <span className="text-orange-600 mr-auto font-display font-medium">Alexander Horner</span>
-      <Link 
+      <Link
         to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0"
-        aria-label="LinkedIn of Alexander Horner" 
-        className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+        aria-label="LinkedIn of Alexander Horner"
+        className="text-white transition-opacity hover:opacity-80 text-2xl w-7 h-7 grid place-items-center"
       >
         <FontAwesomeIcon icon={faLinkedin} className=""/>
         {/* LinkedIn */}
       </Link>
 
-      <Link 
+      <Link
         to="https://github.com/alexanderhorner"
         aria-label="GitHub of Alexander Horner"
-        className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+        className="text-white transition-opacity hover:opacity-80 text-2xl w-7 h-7 grid place-items-center"
       >
         <FontAwesomeIcon icon={faGithub} className=""/>
         {/* GitHub */}
@@ -111,6 +111,7 @@ const HeroSection = () => {
       h-[clamp(640px,100svh,900px)] md:h-[clamp(640px,100svh,1050px)] lg:h-[clamp(640px,100svh,1400px)]"
     >
       <img src={ModernArchitecture} alt="Modern Architecture" className="absolute inset-0 w-full h-full object-cover -z-10" />
+      <div className="absolute inset-0 bg-black/40 -z-10" />
 
       <div className="">
         <Header />
@@ -118,11 +119,11 @@ const HeroSection = () => {
 
       <div className="">
 
-        <h1 className="text-5xl md:text-6xl font-semibold px-5 font-display md:px-6 lg:px-8 max-w-screen-lg lg:mx-auto pr-10">
+        <h1 className="text-5xl md:text-6xl font-semibold px-5 font-display md:px-6 lg:px-8 max-w-screen-lg lg:mx-auto pr-10 text-white">
           Combining Visual Creativity with Technical Excellence
         </h1>
 
-        <h2 className="text-orange-600 px-5 mt-3 md:px-6 lg:px-8 text-lg md:text-xl">
+        <h2 className="text-orange-400 px-5 mt-3 md:px-6 lg:px-8 text-lg md:text-xl">
           Software Development and Design
         </h2>
 
@@ -228,7 +229,7 @@ const CallToAction = () => {
     <section className="py-32 px-4 bg-white">
       <div className="text-center">
         <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">Interested in working together?</p>
-        <p className="text-lg md:text-xl text-gray-600">Let's connect.</p>
+        <p className="text-lg md:text-xl text-gray-600">Let&apos;s connect.</p>
       </div>
 
       <div className="flex justify-center gap-5 mt-8 md:text-lg">
