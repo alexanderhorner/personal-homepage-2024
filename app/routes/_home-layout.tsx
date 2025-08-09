@@ -81,24 +81,22 @@ export default function Index() {
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-left gap-4 px-5 py-6 md:px-6 lg:px-8">
-      <span className="text-orange-600 mr-auto font-display font-medium">Alexander Horner</span>
-      <Link 
+    <header className="absolute top-0 left-0 right-0 z-10 flex items-center gap-4 px-5 py-6 md:px-6 lg:px-8 bg-black/30 backdrop-blur-sm">
+      <span className="text-white mr-auto font-display font-medium tracking-wide">Alexander Horner</span>
+      <Link
         to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0"
-        aria-label="LinkedIn of Alexander Horner" 
-        className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+        aria-label="LinkedIn of Alexander Horner"
+        className="text-white transition-colors hover:text-orange-400 text-2xl w-7 h-7 grid place-items-center"
       >
-        <FontAwesomeIcon icon={faLinkedin} className=""/>
-        {/* LinkedIn */}
+        <FontAwesomeIcon icon={faLinkedin} />
       </Link>
 
-      <Link 
+      <Link
         to="https://github.com/alexanderhorner"
         aria-label="GitHub of Alexander Horner"
-        className="text-gray-800 transition-opacity hover:opacity-60 text-2xl w-7 h-7 grid place-items-center"
+        className="text-white transition-colors hover:text-orange-400 text-2xl w-7 h-7 grid place-items-center"
       >
-        <FontAwesomeIcon icon={faGithub} className=""/>
-        {/* GitHub */}
+        <FontAwesomeIcon icon={faGithub} />
       </Link>
     </header>
   );
@@ -106,28 +104,23 @@ const Header = () => {
 
 const HeroSection = () => {
   return (
-    <section className=" bg-cover bg-center lg:text-center relative
-      grid grid-cols-1 grid-rows-[4fr,auto,6fr] md:grid-rows-[5fr,auto,5fr]
-      h-[clamp(640px,100svh,900px)] md:h-[clamp(640px,100svh,1050px)] lg:h-[clamp(640px,100svh,1400px)]"
+    <section
+      className="relative flex flex-col justify-center text-center h-[clamp(640px,100svh,900px)] md:h-[clamp(640px,100svh,1050px)] lg:h-[clamp(640px,100svh,1400px)]"
     >
       <img src={ModernArchitecture} alt="Modern Architecture" className="absolute inset-0 w-full h-full object-cover -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/80 -z-10" />
 
-      <div className="">
-        <Header />
-      </div>
+      <Header />
 
-      <div className="">
-
-        <h1 className="text-5xl md:text-6xl font-semibold px-5 font-display md:px-6 lg:px-8 max-w-screen-lg lg:mx-auto pr-10">
+      <div className="px-5 md:px-6 lg:px-8 max-w-screen-lg mx-auto">
+        <h1 className="text-5xl md:text-7xl font-bold font-display text-transparent bg-clip-text bg-gradient-to-r from-white to-orange-300">
           Combining Visual Creativity with Technical Excellence
         </h1>
 
-        <h2 className="text-orange-600 px-5 mt-3 md:px-6 lg:px-8 text-lg md:text-xl">
+        <h2 className="mt-4 text-lg md:text-xl text-gray-200">
           Software Development and Design
         </h2>
-
       </div>
-
     </section>
   )
 }
@@ -198,25 +191,32 @@ interface PortfolioItemProps {
 
 export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItemProps) => {
   return (
-    <Link to={id} className="block" preventScrollReset>
+    <Link to={id} className="block group" preventScrollReset>
 
-      <div 
-        className="bg-white rounded-md overflow-hidden block shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all duration-500" 
+      <div
+        className="bg-white rounded-xl overflow-hidden shadow-md transition-transform duration-300 group-hover:shadow-2xl group-hover:-translate-y-1"
       >
 
-        <div>
-          <img loading="lazy" src={img} alt="Project Thumnail" className="w-full aspect-video object-cover" width={1920} height={1080}/>
-        </div>      
+        <div className="overflow-hidden">
+          <img
+            loading="lazy"
+            src={img}
+            alt="Project Thumnail"
+            className="w-full aspect-video object-cover transition-transform duration-300 group-hover:scale-105"
+            width={1920}
+            height={1080}
+          />
+        </div>
 
         <div className="p-4">
-          <h3 className="font-bold leading-snug truncate">
+          <h3 className="font-bold leading-snug">
             {title}
           </h3>
           <div className="text-gray-600 mt-1 line-clamp-2 leading-snug">
             {description}
           </div>
         </div>
-        
+
       </div>
 
     </Link>
@@ -225,24 +225,24 @@ export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItem
 
 const CallToAction = () => {
   return (
-    <section className="py-32 px-4 bg-white">
+    <section className="py-32 px-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white">
       <div className="text-center">
-        <p className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">Interested in working together?</p>
-        <p className="text-lg md:text-xl text-gray-600">Let's connect.</p>
+        <p className="text-2xl md:text-3xl font-semibold mb-2">Interested in working together?</p>
+        <p className="text-lg md:text-xl opacity-90">Let&apos;s connect.</p>
       </div>
 
       <div className="flex justify-center gap-5 mt-8 md:text-lg">
-        <Link 
-          to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0" 
-          className="border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
+        <Link
+          to="https://www.linkedin.com/in/alexander-horner-5ba3a31a0"
+          className="border border-white border-solid py-2 px-4 inline-block hover:bg-white hover:text-gray-900 transition-colors"
         >
           <FontAwesomeIcon icon={faLinkedin} className="mr-2"/>
           LinkedIn
         </Link>
 
-        <Link 
+        <Link
           to="https://github.com/alexanderhorner"
-          className="border border-gray-900 border-solid py-2 px-4 inline-block hover:bg-gray-900 hover:text-white transition-colors"
+          className="border border-white border-solid py-2 px-4 inline-block hover:bg-white hover:text-gray-900 transition-colors"
         >
           <FontAwesomeIcon icon={faGithub} className="mr-2"/>
           GitHub

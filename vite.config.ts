@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     mdx(),
     imagetools({
-      defaultDirectives: (url, metadata) => {
+      defaultDirectives: (url) => {
         const amountOfParameters = url.searchParams.size
 
         // If no parameters are provided, we will return the default parameters
