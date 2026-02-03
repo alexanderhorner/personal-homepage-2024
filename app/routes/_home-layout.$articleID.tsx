@@ -1,5 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
-import { MetaFunction, json, useParams } from "@remix-run/react";
+import { LoaderFunctionArgs, MetaFunction, data, useParams } from "react-router";
 import { ProseArticleModal } from "~/components/ProseArticleModal";
 import { articles } from "~/content/articles";
 import { MetaBaseTitle, MetaDefaultOgImage } from "./_home-layout";
@@ -12,19 +11,19 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     throw new Error("No articleID provided");
   }
 
-  const articleUrl = new URL(request.url)
+  const articleUrl = request.url
 
   try {
     getArticle(articleID);
   } catch (error) {
     if (error === ArticleNotFoundError) {
-      throw json("Article Not Found", { status: 404 });
+      throw data("Article Not Found", { status: 404 });
     } else {
       throw error;
     }
   }
 
-  return json({ articleUrl });
+  return data({ articleUrl });
 };
 
 const ArticleNotFoundError = new Error("Article Not Found");

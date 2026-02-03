@@ -1,4 +1,4 @@
-import { useNavigate } from "@remix-run/react";
+import { useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import { MouseEventHandler, ReactNode, useEffect, useRef } from "react";
 import { useScrollLock } from "~/scrollLockContext";

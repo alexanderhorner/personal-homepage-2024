@@ -1,8 +1,8 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { PageDialog } from "./PageDialog";
 
 
