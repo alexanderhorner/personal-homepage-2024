@@ -1,5 +1,5 @@
-import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Link, json, useLocation, useOutlet } from "@remix-run/react";
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "react-router";
+import { Link, data, useLocation, useOutlet } from "react-router";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement } from "react";
 import ElevatorPitch from "~/content/elevator-pitch.mdx";
@@ -12,9 +12,7 @@ import WebsiteScreenshotOg from "~/assets/images/alexander-horner-com-og-1200.jp
 import { getOpengraphMetaTags } from "~/utils/getOpengraphMetaTags";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const currentUrl = new URL(request.url)
-
-  return json({ currentUrl });
+  return data({ currentUrl: request.url });
 };
 
 export const MetaBaseTitle = "Alexander Horner"
@@ -32,9 +30,9 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     { title: MetaBaseTitle },
     { name: "description", content: MetaDefaultDescription },
     ...getOpengraphMetaTags(
-      currentUrl, 
-      MetaBaseTitle, 
-      MetaDefaultDescription, 
+      currentUrl,
+      MetaBaseTitle,
+      MetaDefaultDescription,
       new URL(MetaDefaultOgImage, currentUrl).toString()
     ),
   ];
@@ -191,7 +189,7 @@ const ProjectsSection = () => {
 
 interface PortfolioItemProps {
   id: string;
-  img: string;
+  img?: string | null;
   title: string;
   description: string;
 }
@@ -204,9 +202,18 @@ export const PortfolioItemCard = ({ id, title, img, description }: PortfolioItem
         className="bg-white rounded-md overflow-hidden block shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all duration-500" 
       >
 
-        <div>
-          <img loading="lazy" src={img} alt="Project Thumnail" className="w-full aspect-video object-cover" width={1920} height={1080}/>
-        </div>      
+        {img ? (
+          <div>
+            <img
+              loading="lazy"
+              src={img}
+              alt="Project Thumnail"
+              className="w-full aspect-video object-cover"
+              width={1920}
+              height={1080}
+            />
+          </div>
+        ) : null}
 
         <div className="p-4">
           <h3 className="font-bold leading-snug truncate">
