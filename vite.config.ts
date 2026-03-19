@@ -1,7 +1,8 @@
 import mdx from '@mdx-js/rollup'
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react'
+import { nitro } from 'nitro/vite'
 import path from 'node:path'
 import { defineConfig } from 'vite'
 import { imagetools } from 'vite-imagetools'
@@ -40,6 +41,7 @@ export default defineConfig({
         crawlLinks: true,
       },
     }),
+    nitro(),
     react(),
   ],
 })
