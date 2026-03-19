@@ -1,20 +1,23 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import mdx from '@mdx-js/rollup'
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import react from '@vitejs/plugin-react'
+import path from 'node:path'
+import { defineConfig } from 'vite'
 import { imagetools } from 'vite-imagetools'
-import path from "path";
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+    },
+  },
   plugins: [
-    mdx(),
+    tsconfigPaths(),
     imagetools({
-      defaultDirectives: (url, metadata) => {
-        const amountOfParameters = url.searchParams.size
-
-        // If no parameters are provided, we will return the default parameters
-        if (amountOfParameters === 0) {
-          // jpg, max width 2048px
+      defaultDirectives: (url) => {
+        if (url.searchParams.size === 0) {
           return new URLSearchParams({
             format: 'jpg',
             quality: '60',
@@ -23,22 +26,20 @@ export default defineConfig({
           })
         }
 
-        // return the original parameters
         return url.searchParams
       },
     }),
-    remix({
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
+    mdx(),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
       },
     }),
-    tsconfigPaths(),
+    react(),
   ],
-  resolve: {
-    alias: {
-      "~": path.resolve(__dirname, "/app"),
-    },
-  },
-});
+})
