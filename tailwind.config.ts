@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 import TailwindTypography from "@tailwindcss/typography";
 
 export default {
-  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}"],
   theme: {
     extend: {
       backgroundImage: {
